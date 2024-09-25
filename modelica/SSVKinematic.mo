@@ -5,8 +5,8 @@ model SSVKinematic
   // The following are all supposed to be injected in the kinematic model by the control system. Skipping it for now
   //input Real s_R;
   //input Real s_L;
-  parameter Real s_R = 0;
-  parameter Real s_L = 0;
+  Real s_R = 0.1;
+  Real s_L = 0.05;
   
   // An important remark is that typically in a model we don't have the side velocities, but the longitudinal velocity of the vehicle and the angular velocity of it, with respect to its frame.
   
