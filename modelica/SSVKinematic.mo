@@ -23,7 +23,7 @@ model SSVKinematic
   // States
   Real x(start=0);
   Real y(start=0);
-  Real theta(start=0.1);
+  Real theta(start=0);
     
   equation
     // Calculate wheel velocities based on feedback linearization inputs
