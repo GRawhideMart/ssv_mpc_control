@@ -1,0 +1,2372 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\usepackage{amsmath}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children no
+\language american
+\language_package default
+\inputencoding utf8
+\fontencoding auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement class
+\float_alignment class
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tablestyle default
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content true
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+Sono partito dal seguente modello cinematico:
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{align*}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+dot{x} &= 
+\backslash
+frac{
+\backslash
+eta_R cos(
+\backslash
+theta)}{2}v_R + 
+\backslash
+frac{
+\backslash
+eta_L cos(
+\backslash
+theta)}{2}v_L 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+dot{y} &= 
+\backslash
+frac{
+\backslash
+eta_R sin(
+\backslash
+theta)}{2}v_R + 
+\backslash
+frac{
+\backslash
+eta_L sin(
+\backslash
+theta)}{2}v_L 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+dot{
+\backslash
+theta} &= 
+\backslash
+frac{
+\backslash
+eta_R}{2d}-
+\backslash
+frac{
+\backslash
+eta_L}{2d}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{align*}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Dove 
+\begin_inset Formula $\eta_{R}=1-s_{R}$
+\end_inset
+
+ e 
+\begin_inset Formula $\eta_{L}=1-s_{L}$
+\end_inset
+
+,
+ con 
+\begin_inset Formula $s_{R}$
+\end_inset
+
+ e 
+\begin_inset Formula $s_{L}$
+\end_inset
+
+ rispettivamente slip del lato destro e del lato sinistro.
+\begin_inset Newline newline
+\end_inset
+
+L'output della feedback linearization,
+ in generale restituisce 
+\begin_inset Formula $v_{x}\ $
+\end_inset
+
+e 
+\begin_inset Formula $\omega$
+\end_inset
+
+.
+ Queste due si possono convertire in input di controllo al modello cinematico tramite le relazioni
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{align*}
+\end_layout
+
+\begin_layout Plain Layout
+
+v_R &= v_x + d
+\backslash
+omega 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+v_L &= v_x - d
+\backslash
+omega 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{align*}
+\end_layout
+
+\end_inset
+
+Applicata a un robot mobile,
+ la feedback linearization è un processo per cui si approssima la cinematica del robot a quella di un punto nello spazio;
+ dato un sistema di riferimento fisso,
+ le coordinate di questo punto virtuale saranno:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{align*}
+\end_layout
+
+\begin_layout Plain Layout
+
+x_P &= x + 
+\backslash
+epsilon cos(
+\backslash
+theta) 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+y_P &= y + 
+\backslash
+epsilon sin(
+\backslash
+theta) 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{align*}
+\end_layout
+
+\end_inset
+
+dove 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+ è un punto lungo l'asse longitudinale del robot.
+ Derivando queste equazioni si ottiene
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{align*}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+dot{x_P} &= 
+\backslash
+dot{x} - 
+\backslash
+epsilon 
+\backslash
+dot{
+\backslash
+theta} sin(
+\backslash
+theta) 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+dot{y_P} &= 
+\backslash
+dot{y} + 
+\backslash
+epsilon 
+\backslash
+dot{
+\backslash
+theta} cos(
+\backslash
+theta) 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{align*}
+\end_layout
+
+\end_inset
+
+A condizione che 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{align*}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+dot{x_P} &= v_{x_P} 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+dot{y_P} &= v_{y_P} 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{align*}
+\end_layout
+
+\end_inset
+
+Ora,
+ è facile vedere come questo sia un modello MIMO composto da due integratori puri.
+ Sostituendo il modello cinematico nelle equazioni si ottiene (passaggi algebrici saltati per brevità)
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{align*}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+dot{x_P} &= 
+\backslash
+frac{
+\backslash
+eta_R}{2}(cos(
+\backslash
+theta) - 
+\backslash
+frac{
+\backslash
+epsilon}{d}sin(
+\backslash
+theta))(v_x + d
+\backslash
+omega) + 
+\backslash
+frac{
+\backslash
+eta_L}{2}(cos(
+\backslash
+theta) + 
+\backslash
+frac{
+\backslash
+epsilon}{d}sin(
+\backslash
+theta))(v_x - d
+\backslash
+omega) 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+dot{y_P} &= 
+\backslash
+frac{
+\backslash
+eta_R}{2}(
+\backslash
+frac{
+\backslash
+epsilon}{d} cos(
+\backslash
+theta) + sin(
+\backslash
+theta))(v_x + d
+\backslash
+omega) + 
+\backslash
+frac{
+\backslash
+eta_L}{2}(-
+\backslash
+frac{
+\backslash
+epsilon}{d} cos(
+\backslash
+theta) + sin(
+\backslash
+theta))(v_x - d
+\backslash
+omega) 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{align*}
+\end_layout
+
+\end_inset
+
+Nel caso della feedback linearization basata su un differential drive vehicle,
+ 
+\begin_inset Formula $v_{x}$
+\end_inset
+
+ e 
+\begin_inset Formula $\omega$
+\end_inset
+
+ sono dati da
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{align*}
+\end_layout
+
+\begin_layout Plain Layout
+
+v_x &= v_{x_P}cos(
+\backslash
+theta)+v_{y_P}sin(
+\backslash
+theta) 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+omega &= -
+\backslash
+frac{1}{
+\backslash
+epsilon}sin(
+\backslash
+theta)v_{x_P}+
+\backslash
+frac{1}{
+\backslash
+epsilon}cos(
+\backslash
+theta)v_{y_P}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{align*}
+\end_layout
+
+\end_inset
+
+Sostituendo queste due equazioni dentro il modello cinematico ideale dopo feedback linearization,
+ si ottiene:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{align*}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+dot{x_P} &= f_{xx}(
+\backslash
+eta_R,
+\backslash
+eta_L,
+\backslash
+theta)v_{x_P} + f_{xy}(
+\backslash
+eta_R,
+\backslash
+eta_L,
+\backslash
+theta)v_{y_P} 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+dot{y_P} &= f_{yx}(
+\backslash
+eta_R,
+\backslash
+eta_L,
+\backslash
+theta)v_{x_P} + f_{yy}(
+\backslash
+eta_R,
+\backslash
+eta_L,
+\backslash
+theta)v_{y_P}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{align*}
+\end_layout
+
+\end_inset
+
+dove si ottengono i seguenti valori
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{align*}
+\end_layout
+
+\begin_layout Plain Layout
+
+f_{xx}(
+\backslash
+eta_R,
+\backslash
+eta_L,
+\backslash
+theta) &= 
+\backslash
+frac{
+\backslash
+eta_R}{2}(1-
+\backslash
+frac{d^2+
+\backslash
+epsilon^2}{2de}sin(2
+\backslash
+theta)) + 
+\backslash
+frac{
+\backslash
+eta_L}{2}(1+
+\backslash
+frac{d^2+
+\backslash
+epsilon^2}{2de}sin(2
+\backslash
+theta)) 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+f_{xy}(
+\backslash
+eta_R,
+\backslash
+eta_L,
+\backslash
+theta) &= (
+\backslash
+frac{
+\backslash
+eta_R}{2} - 
+\backslash
+frac{
+\backslash
+eta_L}{2})(
+\backslash
+frac{d}{
+\backslash
+epsilon}cos^2(
+\backslash
+theta)-
+\backslash
+frac{
+\backslash
+epsilon}{d}sin^2(
+\backslash
+theta)) 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+f_{yx}(
+\backslash
+eta_R,
+\backslash
+eta_L,
+\backslash
+theta) &= (
+\backslash
+frac{
+\backslash
+eta_R}{2} - 
+\backslash
+frac{
+\backslash
+eta_L}{2})(
+\backslash
+frac{
+\backslash
+epsilon}{d}cos^2(
+\backslash
+theta)-
+\backslash
+frac{d}{
+\backslash
+epsilon}sin^2(
+\backslash
+theta)) 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+f_{yy}(
+\backslash
+eta_R,
+\backslash
+eta_L,
+\backslash
+theta) &= 
+\backslash
+frac{
+\backslash
+eta_R}{2}(1+
+\backslash
+frac{d^2+
+\backslash
+epsilon^2}{2de}sin(2
+\backslash
+theta)) + 
+\backslash
+frac{
+\backslash
+eta_L}{2}(1-
+\backslash
+frac{d^2+
+\backslash
+epsilon^2}{2de}sin(2
+\backslash
+theta))
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{align*}
+\end_layout
+
+\end_inset
+
+Per ottenere un comportamento ideale,
+ bisognerebbe far sì che
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{align*}
+\end_layout
+
+\begin_layout Plain Layout
+
+f_{xx}(
+\backslash
+eta_R,
+\backslash
+eta_L,
+\backslash
+theta) &= 1 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+f_{xy}(
+\backslash
+eta_R,
+\backslash
+eta_L,
+\backslash
+theta) &= 0 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+f_{yx}(
+\backslash
+eta_R,
+\backslash
+eta_L,
+\backslash
+theta) &= 0 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+f_{yy}(
+\backslash
+eta_R,
+\backslash
+eta_L,
+\backslash
+theta) &= 1
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{align*}
+\end_layout
+
+\end_inset
+
+Appare immediatamente chiaro che quando gli slittamenti sono uguali da entrambi i lati,
+ il sistema è disaccoppiato (poiché 
+\begin_inset Formula $\eta_{R}=\eta_{L}$
+\end_inset
+
+).
+ Tuttavia,
+ questo è un caso 
+\begin_inset Quotes eld
+\end_inset
+
+triviale
+\begin_inset Quotes erd
+\end_inset
+
+,
+ nel senso che annulla la possibilità che il robot cambi orientamento,
+ quindi affinché il robot possa sterzare è essenziale che lo slip sia differente fra i due lati.
+\begin_inset Newline newline
+\end_inset
+
+Inoltre,
+ risolvendo l'equazione 
+\begin_inset Formula $\frac{d}{\epsilon}cos^{2}(\theta)-\frac{\epsilon}{d}sin^{2}(\theta)=0$
+\end_inset
+
+ e la sua controparte 
+\begin_inset Formula $\frac{\epsilon}{d}cos^{2}(\theta)-\frac{d}{\epsilon}sin^{2}(\theta)=0$
+\end_inset
+
+ si ha
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{align}
+\end_layout
+
+\begin_layout Plain Layout
+
+tan(
+\backslash
+theta)=
+\backslash
+pm 
+\backslash
+frac{d}{
+\backslash
+epsilon} 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+tan(
+\backslash
+theta)=
+\backslash
+pm 
+\backslash
+frac{
+\backslash
+epsilon}{d}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{align}
+\end_layout
+
+\end_inset
+
+Di conseguenza l'unico modo per cui il sistema risulta completamente disaccoppiato se 
+\begin_inset Formula $\eta_{R}\neq\eta_{L}$
+\end_inset
+
+è che 
+\begin_inset Formula $tan(\theta)=\pm1$
+\end_inset
+
+,
+ i.e.
+ che 
+\begin_inset Formula $d=\epsilon$
+\end_inset
+
+.
+ In questo modo i termini di accoppiamento diventano
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{align*}
+\end_layout
+
+\begin_layout Plain Layout
+
+f_{xy}(
+\backslash
+eta_R,
+\backslash
+eta_L,
+\backslash
+theta) &= 
+\backslash
+frac{
+\backslash
+eta_R-
+\backslash
+eta_L}{2}cos(2
+\backslash
+theta) 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+f_{yx}(
+\backslash
+eta_R,
+\backslash
+eta_L,
+\backslash
+theta) &= 
+\backslash
+frac{
+\backslash
+eta_R-
+\backslash
+eta_L}{2}cos(2
+\backslash
+theta)
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{align*}
+\end_layout
+
+\end_inset
+
+I massimi valori di accoppiamento si hanno per 
+\begin_inset Formula $cos(2\theta)=1$
+\end_inset
+
+ e 
+\begin_inset Formula $cos(2\theta)=-1$
+\end_inset
+
+,
+ corrispondenti rispettivamente a 
+\begin_inset Formula $\theta=k\pi$
+\end_inset
+
+ e 
+\begin_inset Formula $\theta=\frac{\pi}{2}+k\pi$
+\end_inset
+
+;
+ il minimo si ha per 
+\begin_inset Formula $cos(2\theta)=0$
+\end_inset
+
+,
+ i.e.
+ per 
+\begin_inset Formula $\theta=\frac{\pi}{4}+\frac{k\pi}{2}$
+\end_inset
+
+.
+ Ne consegue che la funzione che lega l'orientamento 
+\begin_inset Formula $\theta$
+\end_inset
+
+ all'accoppiamento è una funzione oscillatoria con periodo 
+\begin_inset Formula $T=\pi$
+\end_inset
+
+ di ampiezza 
+\begin_inset Formula $\frac{\eta_{R}-\eta_{L}}{2}$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+Per 
+\begin_inset Formula $\theta=0$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+[
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{bmatrix}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+dot{x_P} 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+dot{y_P}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{bmatrix} =
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{bmatrix}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+frac{
+\backslash
+eta_R+
+\backslash
+eta_L}{2} & 
+\backslash
+frac{
+\backslash
+eta_R-
+\backslash
+eta_L}{2} 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+frac{
+\backslash
+eta_R-
+\backslash
+eta_L}{2} & 
+\backslash
+frac{
+\backslash
+eta_R+
+\backslash
+eta_L}{2}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{bmatrix} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{bmatrix}
+\end_layout
+
+\begin_layout Plain Layout
+
+v_{x_{P}} 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+v_{y_{P}}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{bmatrix}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+]
+\end_layout
+
+\end_inset
+
+Per 
+\begin_inset Formula $\theta=\frac{\pi}{4}$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+[
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{bmatrix}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+dot{x_P} 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+dot{y_P}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{bmatrix} =
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{bmatrix}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+eta_L & 0 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+0 & 
+\backslash
+eta_R
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{bmatrix} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{bmatrix}
+\end_layout
+
+\begin_layout Plain Layout
+
+v_{x_{P}} 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+v_{y_{P}}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{bmatrix}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+]
+\end_layout
+
+\end_inset
+
+Per 
+\begin_inset Formula $\theta=\frac{\pi}{2}$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+[
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{bmatrix}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+dot{x_P} 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+dot{y_P}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{bmatrix} =
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{bmatrix}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+frac{
+\backslash
+eta_R+
+\backslash
+eta_L}{2} & -
+\backslash
+frac{
+\backslash
+eta_R-
+\backslash
+eta_L}{2} 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+-
+\backslash
+frac{
+\backslash
+eta_R-
+\backslash
+eta_L}{2} & 
+\backslash
+frac{
+\backslash
+eta_R+
+\backslash
+eta_L}{2}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{bmatrix} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{bmatrix}
+\end_layout
+
+\begin_layout Plain Layout
+
+v_{x_{P}} 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+v_{y_{P}}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{bmatrix}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+]
+\end_layout
+
+\end_inset
+
+Per 
+\begin_inset Formula $\theta=\frac{3}{4}\pi$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+[
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{bmatrix}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+dot{x_P} 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+dot{y_P}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{bmatrix} =
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{bmatrix}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+eta_R & 0 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+0 & 
+\backslash
+eta_L
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{bmatrix} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{bmatrix}
+\end_layout
+
+\begin_layout Plain Layout
+
+v_{x_{P}} 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+v_{y_{P}}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{bmatrix}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+]
+\end_layout
+
+\end_inset
+
+In generale,
+ il sistema è composto da
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+[
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{bmatrix}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+dot{x_P} 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+dot{y_P}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{bmatrix} =
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{bmatrix}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+frac{
+\backslash
+eta_R}{2}(1-sin(2
+\backslash
+theta))+
+\backslash
+frac{
+\backslash
+eta_L}{2}(1+sin(2
+\backslash
+theta)) & 
+\backslash
+frac{
+\backslash
+eta_R-
+\backslash
+eta_L}{2}cos(2
+\backslash
+theta) 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+frac{
+\backslash
+eta_R-
+\backslash
+eta_L}{2}cos(2
+\backslash
+theta) & 
+\backslash
+frac{
+\backslash
+eta_R}{2}(1+sin(2
+\backslash
+theta))+
+\backslash
+frac{
+\backslash
+eta_L}{2}(1-sin(2
+\backslash
+theta))
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{bmatrix} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{bmatrix}
+\end_layout
+
+\begin_layout Plain Layout
+
+v_{x_{P}} 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+v_{y_{P}}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{bmatrix}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+]
+\end_layout
+
+\end_inset
+
+Per disaccoppiare il sistema bisogna trovare una matrice di disaccoppiamento 
+\begin_inset Formula $D(\eta_{R,}\eta_{L,}\theta)$
+\end_inset
+
+ tale che
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{align*}
+\end_layout
+
+\begin_layout Plain Layout
+
+D(
+\backslash
+eta_R,
+\backslash
+eta_L,
+\backslash
+theta)
+\backslash
+begin{bmatrix}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+dot{x_P} 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+dot{y_P}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{bmatrix} = 
+\backslash
+begin{bmatrix}
+\end_layout
+
+\begin_layout Plain Layout
+
+v_{x_P} 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+v_{y_P}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{bmatrix}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{align*}
+\end_layout
+
+\end_inset
+
+Sostituendo le equazioni per 
+\begin_inset Formula $\dot{x_{P}}$
+\end_inset
+
+e 
+\begin_inset Formula $\dot{y_{P}}$
+\end_inset
+
+ nell'equazione precedente,
+ si ottiene:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{align*}
+\end_layout
+
+\begin_layout Plain Layout
+
+D(
+\backslash
+eta_R,
+ 
+\backslash
+eta_L,
+ 
+\backslash
+theta)
+\backslash
+begin{bmatrix}
+\end_layout
+
+\begin_layout Plain Layout
+
+f_xx & f_xy 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+f_yx & f_yy
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{bmatrix}
+\backslash
+begin{bmatrix}
+\end_layout
+
+\begin_layout Plain Layout
+
+v_{x_P} 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+v_{y_P}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{bmatrix}=
+\backslash
+begin{bmatrix}
+\end_layout
+
+\begin_layout Plain Layout
+
+v_{x_P} 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+v_{y_P}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{bmatrix}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{align*}
+\end_layout
+
+\end_inset
+
+Di conseguenza,
+ si cerca una matrice di disaccoppiamento tale che
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{align*}
+\end_layout
+
+\begin_layout Plain Layout
+
+D(
+\backslash
+eta_R,
+\backslash
+eta_L,
+\backslash
+theta)
+\backslash
+begin{bmatrix}
+\end_layout
+
+\begin_layout Plain Layout
+
+f_xx & f_xy 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+f_yx & f_yy
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{bmatrix}=I
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{align*}
+\end_layout
+
+\end_inset
+
+dove 
+\begin_inset Formula $I$
+\end_inset
+
+ è la matrice identità.
+ Di conseguenza:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{align*}
+\end_layout
+
+\begin_layout Plain Layout
+
+D(
+\backslash
+eta_R,
+\backslash
+eta_L,
+\backslash
+theta)=
+\backslash
+begin{bmatrix}
+\end_layout
+
+\begin_layout Plain Layout
+
+f_{xx} & f_{xy} 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+f_{yx} & f_{yy}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{bmatrix}^{-1} = 
+\backslash
+frac{1}{f_{xx}f_{yy}-f_{xy}f_{yx}}
+\backslash
+begin{bmatrix}
+\end_layout
+
+\begin_layout Plain Layout
+
+f_{yy} & -f_{xy} 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+-f_{yx} & f_{xx}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{bmatrix}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{align*}
+\end_layout
+
+\end_inset
+
+Sostituendo le espressioni per 
+\begin_inset Formula $f_{xx},$
+\end_inset
+
+
+\begin_inset Formula $f_{xy},$
+\end_inset
+
+
+\begin_inset Formula $f_{yx},$
+\end_inset
+
+
+\begin_inset Formula $f_{yy}$
+\end_inset
+
+ si ottiene la matrice di disaccoppiamento
+\begin_inset Newline newline
+\end_inset
+
+Nel caso generale 
+\begin_inset Formula $d\neq\epsilon$
+\end_inset
+
+ i termini di accoppiamento non saranno mai contemporaneamente nulli,
+ poiché (ricordando che 
+\begin_inset Formula $cos^{2}(\theta)=\frac{1+cos(2\theta)}{2}$
+\end_inset
+
+ e 
+\begin_inset Formula $sin^{2}(\theta)=\frac{1-cos(2\theta)}{2}$
+\end_inset
+
+) si ottiene:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{align*}
+\end_layout
+
+\begin_layout Plain Layout
+
+f_{xy}(
+\backslash
+eta_R,
+\backslash
+eta_L,
+\backslash
+theta) &= 
+\backslash
+frac{
+\backslash
+eta_R-
+\backslash
+eta_L}{4d
+\backslash
+epsilon}(d^2-
+\backslash
+epsilon^2+(d^2+
+\backslash
+epsilon^2)cos(2
+\backslash
+theta)) 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+f_{yx}(
+\backslash
+eta_R,
+\backslash
+eta_L,
+\backslash
+theta) &= 
+\backslash
+frac{
+\backslash
+eta_R-
+\backslash
+eta_L}{4d
+\backslash
+epsilon}(
+\backslash
+epsilon^2-d^2+(d^2+
+\backslash
+epsilon^2)cos(2
+\backslash
+theta))
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{align*}
+\end_layout
+
+\end_inset
+
+Ne consegue che 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{align*}
+\end_layout
+
+\begin_layout Plain Layout
+
+f_{xy}(
+\backslash
+eta_R,
+\backslash
+eta_L,
+\backslash
+theta) = 0  &
+\backslash
+implies 
+\backslash
+epsilon=
+\backslash
+pm d|tan(
+\backslash
+theta)| 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+f_{yx}(
+\backslash
+eta_R,
+\backslash
+eta_L,
+\backslash
+theta) = 0  &
+\backslash
+implies 
+\backslash
+epsilon=
+\backslash
+pm 
+\backslash
+frac{d}{|tan(
+\backslash
+theta)|}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{align*}
+\end_layout
+
+\end_inset
+
+ovvero non esiste un valore di 
+\begin_inset Formula $\theta$
+\end_inset
+
+ che renda nulle entrambe le equazioni contemporaneamente.
+\begin_inset Newline newline
+\end_inset
+
+In conclusione:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{itemize}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+item $
+\backslash
+eta_R=
+\backslash
+eta_L$ è un caso triviale
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+item se $
+\backslash
+eta_R
+\backslash
+neq
+\backslash
+eta_L$ è opportuno,
+ per disaccoppiare completamente il sistema,
+ che $d=
+\backslash
+epsilon$;
+ in questo caso,
+ l’accoppiamento sarà al più pari a $
+\backslash
+frac{
+\backslash
+eta_R-
+\backslash
+eta_L}{2}$
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{itemize}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
